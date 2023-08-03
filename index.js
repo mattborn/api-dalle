@@ -6,7 +6,7 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-functions.http('turbo', async (req, res) => {
+functions.http('dalle', async (req, res) => {
   //cloud.google.com/functions/docs/samples/functions-http-cors#functions_http_cors-nodejs
   res.set('Access-Control-Allow-Origin', '*')
   if (req.method === 'OPTIONS') {
@@ -16,11 +16,12 @@ functions.http('turbo', async (req, res) => {
     res.status(204).send('')
   } else {
     try {
-      const completion = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
-        messages: req.body,
+      const response = await openai.createImage({
+        n: 1,
+        prompt: req.body.prompt,
+        size: '512x512',
       })
-      res.status(200).send(completion.data.choices[0].message.content)
+      res.status(200).send(response.data.data[0].url)
     } catch (error) {
       res.status(500).send(error)
     }

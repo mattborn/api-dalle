@@ -1,12 +1,11 @@
 {
-  "name": "api-turbo",
+  "name": "api-dalle",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "author": "YourYeti, Inc.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meetbigfoot/api-turbo.git"
+    "url": "git+https://github.com/mattborn/api-dalle.git"
   },
   "engines": {
     "node": ">=12.0.0"
